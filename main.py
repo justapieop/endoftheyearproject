@@ -1,6 +1,7 @@
 import pandas as pd
 import random as rand
 import os
+import sys
 
 
 def clrscr():
@@ -14,7 +15,8 @@ def prompt_continue():
         pInput = "N"
     if pInput == "Y":
         clrscr()
-        os.execv()
+        sys.stdout.flush()
+        os.execl(sys.executable, sys.executable, *sys.argv)
     else:
         exit()
 
