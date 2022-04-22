@@ -1,5 +1,25 @@
 import pandas as pd
 import random as rand
+import os
+
+
+def clrscr():
+    os.system("cls||clear")
+
+
+def prompt_continue():
+    print("Do you want to continue? [Y/N]")
+    pInput = input().capitalize()
+    if not pInput in ["Y", "N"]:
+        pInput = "N"
+    if pInput == "Y":
+        clrscr()
+        os.execv()
+    else:
+        exit()
+
+
+clrscr()
 
 
 class bcolors:
@@ -18,7 +38,7 @@ chosen = rand.choice(words).capitalize()
 def check_correct_word(str, attempt):
     if str == chosen:
         print("Congratulation! You have guessed the right word!")
-        exit()
+        prompt_continue()
     else:
         hint = ""
         for i in range(len(str)):
@@ -32,7 +52,9 @@ def check_correct_word(str, attempt):
         hint += bcolors.RESET
         print(hint)
     if attempt == 4 and str != chosen:
-        return f'Incorrect words after 5 attempts. The correct word is {chosen}'
+        print(
+            f'Incorrect words after 5 attempts. The correct word is {chosen}')
+        prompt_continue()
 
 
 print(f'You have 5 attemps to guess the correct {len(chosen)}-character word')
