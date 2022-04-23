@@ -8,19 +8,6 @@ def clrscr():
     os.system("cls||clear")
 
 
-def prompt_continue():
-    print("Do you want to continue? [Y/N]")
-    pInput = input().capitalize()
-    if not pInput in ["Y", "N"]:
-        pInput = "N"
-    if pInput == "Y":
-        clrscr()
-        sys.stdout.flush()
-        os.execl(sys.executable, sys.executable, *sys.argv)
-    else:
-        exit()
-
-
 clrscr()
 
 
@@ -41,7 +28,6 @@ chosen_word_length = len(chosen)
 def check_correct_word(str, attempt):
     if str == chosen:
         print("Congratulation! You have guessed the right word!")
-        prompt_continue()
     else:
         hint = ""
         for i in range(len(str)):
@@ -57,7 +43,6 @@ def check_correct_word(str, attempt):
     if attempt == 4 and str != chosen:
         print(
             f'Incorrect words after 5 attempts. The correct word is {chosen}')
-        prompt_continue()
 
 
 print(
