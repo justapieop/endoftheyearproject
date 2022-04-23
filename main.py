@@ -35,6 +35,7 @@ df = pd.read_csv("words.csv")
 words = df.columns.array
 
 chosen = rand.choice(words).capitalize()
+chosen_word_length = len(chosen)
 
 
 def check_correct_word(str, attempt):
@@ -59,7 +60,9 @@ def check_correct_word(str, attempt):
         prompt_continue()
 
 
-print(f'You have 5 attemps to guess the correct {len(chosen)}-character word')
+print(
+    f'You have {chosen_word_length} attemps to guess the correct {chosen_word_length}-character word'
+)
 print(
     "For each word, if the answer is incorrect, your hint will appear in a form of word like below"
 )
@@ -76,7 +79,7 @@ print(
 print("Happy Playing!")
 for i in range(5):
     wInput = input()
-    while len(wInput) != len(chosen):
-        print(f'Please only enter a word with {len(chosen)} characters')
+    while len(wInput) != chosen_word_length:
+        print(f'Please only enter a word with {chosen_word_length} characters')
         wInput = input()
     check_correct_word(wInput.capitalize(), i)
