@@ -62,7 +62,7 @@ print(
     f'{bcolors.GREEN} {bcolors.RESET}: The character is in the answer and have the exact position'
 )
 print("Happy Playing!")
-for i in range(5):
+for i in range(chosen_word_length):
     wInput = input()
     while len(wInput) != chosen_word_length:
         print(f'Please only enter a word with {chosen_word_length} characters')
